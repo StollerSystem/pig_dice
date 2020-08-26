@@ -10,22 +10,31 @@ Game.prototype.endGame = function() {
 }
 
 function runGame() {
-  while (player1.totalScore < 5 || player2.totalScore < 5) {
-    pigDice.turnOrder.forEach(function(currentPlayer) {
+  let gameOn = true;
+  while (gameOn) { //will be < 100 
+    // pigDice.turnOrder.forEach(function(currentPlayer) {
+    for (const currentPlayer of pigDice.turnOrder) {
       // PLAYER TURN __      
-      console.log(currentPlayer.name,"'s turn!");
-      playerTurn(currentPlayer)            
-      currentPlayer.totalScore += 1 // < to keep from infinite looop 
-      console.log(currentPlayer.totalScore)
-    })
-  }  
+      console.log(currentPlayer.name,"'s turn! Current Score:",currentPlayer.totalScore);
+      playerTurn(currentPlayer);          
+      //currentPlayer.totalScore += 1 // < to keep from infinite looop
+      if (currentPlayer.totalScore >= 50) {
+        console.log(currentPlayer.name," WINS!!!!");
+        currentPlayer.winner = true;
+        gameOn = false;
+        break;
+      }       
+    }
+  }
+  console.log("GAME OVER")  
 }
 
 function playerTurn(player) {
   turnActive = true 
+  player.turnScore = 0;
   while (turnActive) {
     // PLAYER TURN __
-    let input = prompt('"Hit "r" to ROLL and "h" to HOLD');
+    let input = prompt('"Hit any key to ROLL or "h" to HOLD');
     console.log(input)
     if (input === "h") {
       turnActive = false       
@@ -43,12 +52,12 @@ function playerTurn(player) {
           console.log("prev turn score:",player.turnScore)
           player.turnScore += roll
           console.log("new turn score:",player.turnScore)
-        }
-
-        
+        }        
     }
   }
-  // TOTAL SCORE UP HERE
+  player.totalScore += player.turnScore 
+  console.log(player.name,"'s TOTAL SCORE:",player.totalScore)
+  // TOTAL SCORE UP HERE  
 }
 
 
@@ -58,6 +67,7 @@ function Player(name) {
   this.name = name;
   this.totalScore = 0;
   this.turnScore = 0;
+  this.winner = false
 }
 
 
