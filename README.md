@@ -22,7 +22,7 @@ Each turn, a player repeatedly rolls a die until either a 1 is rolled or the pla
 
 * [X] for each roll that is not a one, the player adds the dice total to their turn score
 
-* [] if a player decides to "hold" their turn is over and their turn score is added to their total score 
+* [X] if a player decides to "hold" their turn is over and their turn score is added to their total score 
 
 * [] the first player to get a total score of 100 or more wins the pig
 
