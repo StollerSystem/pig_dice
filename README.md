@@ -16,11 +16,11 @@ Each turn, a player repeatedly rolls a die until either a 1 is rolled or the pla
 
 ## Specs
 
-* [] The game takes two players, starting with player one they roll 1 die 
+* [X] The game takes two players, starting with player one they roll 1 die 
 
-* [] each player can roll a die as many times as they want until they get a 1
+* [X] each player can roll a die as many times as they want until they get a 1
 
-* [] for each roll that is not a one, the player adds the dice total to their turn score
+* [X] for each roll that is not a one, the player adds the dice total to their turn score
 
 * [] if a player decides to "hold" their turn is over and their turn score is added to their total score 
 

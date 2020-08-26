@@ -1,24 +1,22 @@
 // Businesss Logic 
 
 // Game Logic 
-function Game(player1,player2) {
-  this.turnOrder = [player1,player2];
+function Game(player1,player2,player3) {
+  this.turnOrder = [player1,player2,player3];
 }
 
 Game.prototype.endGame = function() {
   // WHEN A PLAYERS TOTAL SCORE >= 100 THEN GAME OVER!
 }
 
-function runGame() {
+function runGame(matchScore) {
   let gameOn = true;
-  while (gameOn) { //will be < 100 
-    // pigDice.turnOrder.forEach(function(currentPlayer) {
+  while (gameOn) { 
     for (const currentPlayer of pigDice.turnOrder) {
       // PLAYER TURN __      
       console.log(currentPlayer.name,"'s turn! Current Score:",currentPlayer.totalScore);
-      playerTurn(currentPlayer);          
-      //currentPlayer.totalScore += 1 // < to keep from infinite looop
-      if (currentPlayer.totalScore >= 50) {
+      playerTurn(currentPlayer);      
+      if (currentPlayer.totalScore >= matchScore) {
         console.log(currentPlayer.name," WINS!!!!");
         currentPlayer.winner = true;
         gameOn = false;
@@ -57,43 +55,26 @@ function playerTurn(player) {
   }
   player.totalScore += player.turnScore 
   console.log(player.name,"'s TOTAL SCORE:",player.totalScore)
-  // TOTAL SCORE UP HERE  
+  // TOTAL SCORE UP HERE ^  
 }
 
 
-
-// Player Logic 
+// Player constructor 
 function Player(name) {
   this.name = name;
   this.totalScore = 0;
   this.turnScore = 0;
   this.winner = false
 }
-
-
 Player.prototype.rollDice = function() {
-  let rollDice = Math.floor((Math.random() * 6) + 1);
-  //console.log(rollDice)
-  return rollDice;
-  //ROLL DICE HERE // Math.floor((Math.random() * 6) + 1);
-  // IF NOT ONE, ADD TO TURNSCORE
-  // THEN HAVE OPTION TO ROLL AGAIN OR HOLD
-  
-  
+  let rollDice = Math.floor((Math.random() * 6) + 1);  
+  return rollDice;  
 }
 
 
-Player.prototype.hold = function() {
-  //ENDS TURN AND ADDS SCORE
-}
-
-
-Player.prototype.rollOne = function() {
-  //IF A PLAYER ROLLS A ONE
-}
 
 // Initialize game objects
-
 let player1 = new Player("Bilbo");
 let player2 = new Player("Gandalf");
-let pigDice = new Game(player1,player2);
+let player3 = new Player("Froto");
+let pigDice = new Game(player1,player2,player3);
