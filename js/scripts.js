@@ -28,7 +28,7 @@ function runGame(matchScore) {
 }
 
 function playerTurn(player) {
-  turnActive = true 
+  let turnActive = true 
   player.turnScore = 0;
   while (turnActive) {
     // PLAYER TURN __
